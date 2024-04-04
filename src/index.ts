@@ -1,20 +1,37 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+import express, { NextFunction, Request, Response } from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+import userRouter from "./routes/users";
+require("dotenv").config();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const app = express();
+const db = mongoose.connection;
+const port = process.env.PORT || 3000;
 
-var app = express();
-
-app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+mongoose.connect(
+  `mongodb+srv://vvcrackershop:d2qPb3fD6O1PwPBR@vvcrackersdb.yry30s8.mongodb.net/?retryWrites=true&w=majority`
+);
 
-module.exports = app;
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function () {
+  console.log("Connected successfully");
+});
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello, TypeScript Express!");
+});
+// Custom Routes
+app.use('/user', userRouter);
+
+// Add this error handling middleware
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong");
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
