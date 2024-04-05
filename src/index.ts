@@ -2,18 +2,19 @@ import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import userRouter from "./routes/users";
-require("dotenv").config();
+import 'dotenv/config'
+
 
 const app = express();
 const db = mongoose.connection;
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
+const dbConnectionURL = process.env.DB_URL;
+
 
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(
-  `mongodb+srv://vvcrackershop:d2qPb3fD6O1PwPBR@vvcrackersdb.yry30s8.mongodb.net/?retryWrites=true&w=majority`
-);
+mongoose.connect(`${dbConnectionURL}`);
 
 db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
@@ -23,6 +24,7 @@ db.once("open", function () {
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello, TypeScript Express!");
 });
+
 // Custom Routes
 app.use('/user', userRouter);
 
