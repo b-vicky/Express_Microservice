@@ -66,7 +66,7 @@ export class Users {
             const token = Jwt.sign({
                 id: user.id
             }, `${process.env.JWT_SECRET}`, {
-                expiresIn: 86400
+                expiresIn: '1h'
             });
             return response.status(200).send({
                 message: "Login successful",
