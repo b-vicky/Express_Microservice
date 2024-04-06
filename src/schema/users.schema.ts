@@ -6,6 +6,9 @@ export interface IUser extends Document {
   password: string;
   firstName: string;
   lastName: string;
+  org: string;
+  workspace: string[];
+  projects: string[];
 }
 
 const UserSchema: Schema = new Schema({
@@ -32,8 +35,16 @@ const UserSchema: Schema = new Schema({
   },
   password: {
     type: String,
-    required: true,
-    minlength: 8
+    required: [true, 'Please enter your password'],
+    minlength: [8, 'Password must be atleast 8 character long']
+  },
+  workspace: {
+    type: [Schema.Types.ObjectId],
+    required: [true, 'User must be assigned to atlease one workspace']
+  },
+  projects: {
+    type: [Schema.Types.ObjectId],
+    default: null
   },
 });
 
