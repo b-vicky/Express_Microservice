@@ -93,9 +93,11 @@ export class Projects {
   async updateProjects(request: Request, response: Response) {
     const projectId = { _id: request.body.id };
     const projectUpdatePayload = request.body.updatePayload;
-    const [failure, updatedProject] = await to(projectsModel.findOneAndUpdate(projectId, projectUpdatePayload));
+    const [failure, updatedProject] = await to(projectsModel.updateOne(projectId, projectUpdatePayload));
     if (!failure) {
-      return response.status(200).send(updatedProject);
+      return response.status(200).send({
+        message: 'Updated the project details successfully',
+      });
     }
     return response.status(500).send(failure);
   }

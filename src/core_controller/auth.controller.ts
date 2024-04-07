@@ -1,10 +1,11 @@
 import Jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-import { get } from "lodash";
+import { get, split } from "lodash";
 
 export function validateToken(request: Request, response: Response, next: NextFunction) {
-    const token: string = get(request.headers, 'authorization', '');
-    Jwt.verify(token, `${process.env.JWT_SECRET}`, (error, success) => {
+    const token: string[] = split(get(request.headers, 'authorization', ''), ' ');
+    console.log("🚀 ~ validateToken ~ token:", token)
+    Jwt.verify(token[1], `${process.env.JWT_SECRET}`, (error, success) => {
         if (error?.name === 'TokenExpiredError') {
             return response.status(401).send({
                 message: 'Token Expried'

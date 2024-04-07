@@ -4,7 +4,7 @@ import { validateToken } from "../core_controller/auth.controller";
 
 const milestoneRouter = Router();
 
-milestoneRouter.get("/get", validateToken, Milestone.ListMilestone);
+milestoneRouter.get("/", validateToken, Milestone.ListMilestone);
 milestoneRouter.post("/create", validateToken, Milestone.CreateMilestone);
 
 export default milestoneRouter;

@@ -6,6 +6,6 @@ const projectRouter = Router();
 
 projectRouter.get("/", validateToken, Projects.GetProjects);
 projectRouter.get("/create", validateToken, Projects.FetchProjects);
-projectRouter.get("/update", validateToken, Projects.UpdateProjects);
+projectRouter.patch("/update", validateToken, Projects.UpdateProjects);
 
 export default projectRouter;
