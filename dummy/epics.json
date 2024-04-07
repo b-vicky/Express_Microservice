@@ -16,7 +16,7 @@
         "labels": null,
         "attachment": [],
         "duedate": null,
-        "assignee": null,
+        "assignee": "testuser@test.com",
         "status": null
       },
       "fields": {
@@ -59,7 +59,7 @@
         "labels": [],
         "attachment": [],
         "duedate": null,
-        "assignee": null,
+        "assignee": "testuser@test.com",
         "status": {
           "self": "https://api.atlassian.com/ex/jira/6c5426d3-fc00-4e93-959f-3b1b2c54cd33/rest/api/2/status/10027",
           "description": "",
@@ -93,7 +93,7 @@
         "labels": null,
         "attachment": [],
         "duedate": null,
-        "assignee": null,
+        "assignee":  "testuser1@test.com",
         "status": null
       },
       "fields": {
@@ -136,7 +136,7 @@
         "labels": [],
         "attachment": [],
         "duedate": null,
-        "assignee": null,
+        "assignee":  "testuser1@test.com",
         "status": {
           "self": "https://api.atlassian.com/ex/jira/6c5426d3-fc00-4e93-959f-3b1b2c54cd33/rest/api/2/status/10027",
           "description": "",
@@ -170,7 +170,7 @@
         "labels": null,
         "attachment": [],
         "duedate": null,
-        "assignee": null,
+        "assignee":  "testuser3@test.com",
         "status": null
       },
       "fields": {
@@ -213,7 +213,7 @@
         "labels": [],
         "attachment": [],
         "duedate": null,
-        "assignee": null,
+        "assignee":  "testuser3@test.com",
         "status": {
           "self": "https://api.atlassian.com/ex/jira/6c5426d3-fc00-4e93-959f-3b1b2c54cd33/rest/api/2/status/10027",
           "description": "",
@@ -247,7 +247,7 @@
         "labels": null,
         "attachment": [],
         "duedate": null,
-        "assignee": null,
+        "assignee": "testuser@test.com",
         "status": null
       },
       "fields": {
@@ -290,7 +290,7 @@
         "labels": [],
         "attachment": [],
         "duedate": null,
-        "assignee": null,
+        "assignee":  "testuser@test.com",
         "status": {
           "self": "https://api.atlassian.com/ex/jira/6c5426d3-fc00-4e93-959f-3b1b2c54cd33/rest/api/2/status/10027",
           "description": "",

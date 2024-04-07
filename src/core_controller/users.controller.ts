@@ -23,6 +23,11 @@ export class Users {
         return createUser.findUser(req, res);
     }
 
+    static async UpdateUser(req: Request, res: Response) {
+        const createUser = new Users();
+        return createUser.updateUser(req, res);
+    }
+
 
     static async FindAllUser(req: Request, res: Response) {
         const createUser = new Users();
@@ -86,6 +91,15 @@ export class Users {
         return response.status(500).send(failure);
     }
 
+    async updateUser(request: Request, response: Response) {
+        const userId = {_id: request.body.id};
+        const userUpdatePayload = request.body.updatePayload;
+        const [failure, updatedUser] = await to(usersModel.findOneAndUpdate(userId, userUpdatePayload));
+        if (!failure) {
+            return response.status(200).send(updatedUser);
+        }
+        return response.status(500).send(failure);
+    }
 
     async findAllUsers(request: Request, response: Response) {
         const [failure, userValue] = await to(usersModel.find({}));

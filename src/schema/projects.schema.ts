@@ -10,6 +10,7 @@ export interface IProject extends Document {
   priority: string;
   status: string;
   milestones: string[];
+  workspace: string[];
 }
 
 const ProjectSchema: Schema = new Schema({
@@ -45,6 +46,10 @@ const ProjectSchema: Schema = new Schema({
     default: null
   },
   milestones: {
+    type: [Schema.Types.ObjectId],
+    default: null
+  },
+  workspace: {
     type: [Schema.Types.ObjectId],
     default: null
   },

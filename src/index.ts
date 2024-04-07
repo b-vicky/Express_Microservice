@@ -1,9 +1,11 @@
 import express, { NextFunction, Request, Response } from "express";
+import 'dotenv/config'
 import cors from "cors";
 import mongoose from "mongoose";
 import userRouter from "./routes/users.route";
 import projectRouter from "./routes/projects.route";
-import 'dotenv/config'
+import workspaceRouter from "./routes/workspace.route";
+import milestoneRouter from "./routes/milestone.route";
 
 
 const app = express();
@@ -29,6 +31,8 @@ app.get("/", (req: Request, res: Response) => {
 // Custom Routes
 app.use('/user', userRouter);
 app.use('/projects', projectRouter);
+app.use('/workspace', workspaceRouter);
+app.use('/milestones', milestoneRouter);
 
 // Add this error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
