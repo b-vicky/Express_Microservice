@@ -5,7 +5,6 @@ export interface IProject extends Document {
   description: string;
   parentProjectName: string;
   parentProjectID: string;
-  icon: string;
   assignee: string;
   priority: string;
   status: string;
@@ -28,10 +27,6 @@ const ProjectSchema: Schema = new Schema({
   parentProjectID: {
     type: Number,
     required: [true, 'Parent project id must be provided']
-  },
-  icon: {
-    type: String,
-    default: null
   },
   assignee: {
     type: String,

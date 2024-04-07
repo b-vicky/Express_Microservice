@@ -4,6 +4,8 @@ import { validateToken } from "../core_controller/auth.controller";
 
 const projectRouter = Router();
 
-projectRouter.get("/get", validateToken, Projects.FetchProjects);
+projectRouter.get("/", validateToken, Projects.GetProjects);
+projectRouter.get("/create", validateToken, Projects.FetchProjects);
+projectRouter.get("/update", validateToken, Projects.UpdateProjects);
 
 export default projectRouter;

@@ -12,7 +12,8 @@ userRouter.patch("/update", validateToken, Users.UpdateUser);
 
 userRouter.get("/findAll", validateToken, Users.FindAllUser);
 
-userRouter.get("/:id", validateToken, Users.FindUser);
+userRouter.get("/projects", validateToken, Users.GetUserProjects);
 
+userRouter.get("/:id", validateToken, Users.FindUser);
 
 export default userRouter;
